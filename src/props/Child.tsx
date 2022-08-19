@@ -2,8 +2,11 @@ interface ChildProps {
   color: string;
 }
 
-const Child = ({ color }: ChildProps) => {
+export const Child = ({ color }: ChildProps) => {
   return <div>{color}</div>;
 };
 
-export default Child;
+// export const ChildAsFC: React.FunctionComponent<ChildProps> = ({ color }) => {
+export const ChildAsFC: React.FC<ChildProps> = ({ color }) => {
+  return <div>{color}</div>;
+};
