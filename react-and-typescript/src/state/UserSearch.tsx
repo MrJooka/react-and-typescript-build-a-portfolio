@@ -9,14 +9,19 @@ const users = [
 
 const UserSearch: React.FC = () => {
   const [name, setName] = useState('');
+  const [user, setUser] = useState<{ name: string; age: number } | undefined>();
 
-  const onClick = () => {};
+  const onClick = () => {
+    const foundUser = users.find((user) => user.name === name);
+    setUser(foundUser);
+  };
 
   return (
     <div>
       UserSearch
-      <input value={name} onChange={(e) => setName(e.target.name)} />
+      <input value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={onClick}>Find User</button>
+      <p>{user?.name}</p>
     </div>
   );
 };
