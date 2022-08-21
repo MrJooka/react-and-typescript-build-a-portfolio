@@ -6,7 +6,7 @@ const RepositoriesList: React.FC = () => {
   const [term, setTerm] = useState('');
   const { searchRepositories } = useActions();
 
-  const { data, error, loading } = useTypedSelector(
+  const { data, loading, error } = useTypedSelector(
     (state) => state.repositories
   );
 
@@ -21,6 +21,9 @@ const RepositoriesList: React.FC = () => {
         <input value={term} onChange={(e) => setTerm(e.target.value)} />
         <button>Saerch</button>
       </form>
+      {error && <h3>{error}</h3>}
+      {loading && <h3>Loading...</h3>}
+      {!loading && !error && data.map((name) => <div key={name}>{name}</div>)}
     </div>
   );
 };
